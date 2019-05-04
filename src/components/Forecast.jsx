@@ -1,55 +1,38 @@
 import React from 'react';
 
-const Forecast = props => {
-  const { data, unit } = props;
-  return (
-    <section className='weather-forecast'>
-      <div className='forecast__switch'>
-        <button className='forecast__switch_0 switch-active'>5 items</button>
-        <button className='forecast__switch_1'>10 items</button>
-      </div>
-      <div className='weather-forecast__row'>
-        <span className='weather-forecast__day'>Fri</span>
-        <span className='weather-forecast__icon'>
-          <i className='fa fa-clock-o' /> 10:00
-        </span>
-        <span className='weather-forecast__high'>19 c</span>
-        <span className='weather-forecast__low'>8 c</span>
-      </div>
-      <div className='weather-forecast__row'>
-        <span className='weather-forecast__day'>Fri</span>
-        <span className='weather-forecast__icon'>
-          <i className='fa fa-clock-o' /> 13:00
-        </span>
-        <span className='weather-forecast__high'>19 c</span>
-        <span className='weather-forecast__low'>8 c</span>
-      </div>
-      <div className='weather-forecast__row'>
-        <span className='weather-forecast__day'>Fri</span>
-        <span className='weather-forecast__icon'>
-          <i className='fa fa-clock-o' /> 16:00
-        </span>
-        <span className='weather-forecast__high'>19 c</span>
-        <span className='weather-forecast__low'>8 c</span>
-      </div>
-      <div className='weather-forecast__row'>
-        <span className='weather-forecast__day'>Fri</span>
-        <span className='weather-forecast__icon'>
-          <i className='fa fa-clock-o' /> 19:00
-        </span>
-        <span className='weather-forecast__high'>19 c</span>
-        <span className='weather-forecast__low'>8 c</span>
-      </div>
-      <div className='weather-forecast__row'>
-        <span className='weather-forecast__day'>Fri</span>
-        <span className='weather-forecast__icon'>
-          <i className='fa fa-clock-o' /> 22:00
-        </span>
-        <span className='weather-forecast__high'>19 c</span>
-        <span className='weather-forecast__low'>8 c</span>
-      </div>
-    </section>
-  );
-};
+class Forecast extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    const { data, unit } = this.props;
+    let params = this.props.data.map(params => {
+      return (
+        <div className='weather-forecast__row'>
+          <span className='weather-forecast__day'>{params.weekday}</span>
+          <span className='weather-forecast__icon'>
+            <i className='fa fa-clock-o' /> {params.time}
+          </span>
+          <span className='weather-forecast__high'>
+            {params.high[unit]} {unit}
+          </span>
+          <span className='weather-forecast__low'>
+            {' '}
+            {params.low[unit]} {unit}
+          </span>
+        </div>
+      );
+    });
+    return (
+      <section className='weather-forecast'>
+        <div className='forecast__switch'>
+          <button className='forecast__switch_0 switch-active'>5 items</button>
+          <button className='forecast__switch_1'>10 items</button>
+        </div>
+        <div>{params}</div>
+      </section>
+    );
+  }
+}
 
 export default Forecast;
