@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Forecast = (props) => {
+const CityCondition = (props) => {
     return (
-        <section class="wearher-condition">
+        <section class="weather-condition">
         TODO: condition
         </section>
     );
 }
 
-export default Forecast;
+export default CityCondition;
