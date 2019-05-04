@@ -13,40 +13,40 @@ const Forecast = (props) => {
                 <span className="weather-forecast__icon">
                     <i className="weather-forecast__icon">{data[0].time}</i>
                 </span>
-                <span className="weather-forecast__high">{data[0].high[unit]}</span>
-                <span className="weather-forecast__low">{data[0].low[unit]}</span>
+                <span className="weather-forecast__high">{data[0].high[unit]} {unit}</span>
+                <span className="weather-forecast__low">{data[0].low[unit]} {unit}</span>
             </div>
             <div className="weather-forecast__row">
                 <span className="weather-forecast__day">{data[0].weekday}</span>
                 <span className="weather-forecast__icon">
                     <i className="weather-forecast__icon">{data[0].time}</i>
                 </span>
-                <span className="weather-forecast__high">{data[0].high[unit]}</span>
-                <span className="weather-forecast__low">{data[0].low[unit]}</span>
+                <span className="weather-forecast__high">{data[0].high[unit]} {unit}</span>
+                <span className="weather-forecast__low">{data[0].low[unit]} {unit}</span>
             </div>
             <div className="weather-forecast__row">
                 <span className="weather-forecast__day">{data[0].weekday}</span>
                 <span className="weather-forecast__icon">
                     <i className="weather-forecast__icon">{data[0].time}</i>
                 </span>
-                <span className="weather-forecast__high">{data[0].high[unit]}</span>
-                <span className="weather-forecast__low">{data[0].low[unit]}</span>
+                <span className="weather-forecast__high">{data[0].high[unit]} {unit}</span>
+                <span className="weather-forecast__low">{data[0].low[unit]} {unit}</span>
             </div>
             <div className="weather-forecast__row">
                 <span className="weather-forecast__day">{data[0].weekday}</span>
                 <span className="weather-forecast__icon">
                     <i className="weather-forecast__icon">{data[0].time}</i>
                 </span>
-                <span className="weather-forecast__high">{data[0].high[unit]}</span>
-                <span className="weather-forecast__low">{data[0].low[unit]}</span>
+                <span className="weather-forecast__high">{data[0].high[unit]} {unit}</span>
+                <span className="weather-forecast__low">{data[0].low[unit]} {unit}</span>
             </div>
             <div className="weather-forecast__row">
                 <span className="weather-forecast__day">{data[0].weekday}</span>
                 <span className="weather-forecast__icon">
                     <i className="weather-forecast__icon">{data[0].time}</i>
                 </span>
-                <span className="weather-forecast__high">{data[0].high[unit]}</span>
-                <span className="weather-forecast__low">{data[0].low[unit]}</span>
+                <span className="weather-forecast__high">{data[0].high[unit]} {unit}</span>
+                <span className="weather-forecast__low">{data[0].low[unit]} {unit}</span>
             </div>
         </section>
     );

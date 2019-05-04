@@ -27,12 +27,34 @@ const mockConditionData = {
   
 
 export default class WeatherChannel extends Component{
+    constructor(props) {
+        super(props);
+        this.state={unit:"C"}
+    }
+    
+    swapTempUnit = () => {
+        this.setState ((preState, props) => {
+            if (preState.unit==="C") {
+                return ({unit:"F"});
+            }
+            return ({unit:"C"});            
+            });
+    }
     render(){
         return(
             <main>
-                <Toolbar />                
-                <CityCondition data={mockConditionData} unit={'C'} />               
-                <Forecast  data={mockForecastData} unit={'C'}/>                 
+                <Toolbar 
+                    swapTempUnit={this.swapTempUnit}
+                    unit={this.state.unit}
+                />                
+                <CityCondition 
+                    data={mockConditionData} 
+                    unit={this.state.unit}                
+                 />               
+                <Forecast 
+                    data={mockForecastData} 
+                    unit={this.state.unit}
+                 />                 
             </main>
         );
     }
