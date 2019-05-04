@@ -103,11 +103,21 @@
   /* .weather-condition {
     margin-bottom: 50px;
   } */
+  /* charlie add start*/
+  .weatherchannel-container {
+    display: flex;
+    justify-content:space-between;
+  }
+  /* end */
   .weather-condition__location {
     margin-top: 3rem;
     text-align: center;
     font-size: 1.2rem;
     font-weight: 700;
+  }
+  .weather-condition__weather {
+    text-align: center;
+    font-size: 14px;
   }
   .weather-condition__desc {
     display: flex;
