@@ -1,0 +1,10 @@
+.weather-channel__footer {
+  background-color: rgba(0, 0, 0, 0.1); }
+  .weather-channel__footer p {
+    margin: 3px auto;
+    text-align: center; }
+
+@media only screen and (min-width: 800px) {
+  .weather-channel__footer {
+    clear: both;
+    padding: 8px 30px; } }

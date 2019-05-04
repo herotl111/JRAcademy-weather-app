@@ -1,0 +1,28 @@
+nav {
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 3px rgba(0, 0, 0, 0.24);
+  padding: 0.8rem 0 0.8rem 1rem;
+  display: flex;
+  flex: 1; }
+  nav .search-input {
+    font-size: 100%;
+    border-radius: 30px;
+    background-color: #1e202b;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    width: 180px; }
+  nav .search-btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: white;
+    margin-left: -39px; }
+  nav .temp-switch {
+    color: #fff;
+    cursor: pointer;
+    border-radius: 30px;
+    background-color: #009ad8;
+    font-size: 0.9rem;
+    margin-left: 35px;
+    padding: 5px 28px 5px 28px; }
+    nav .temp-switch i {
+      padding-right: 5px; }

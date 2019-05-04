@@ -1,0 +1,33 @@
+.weather-condition__location {
+  margin-top: 3rem;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700; }
+  .weather-condition__location + div {
+    text-align: center;
+    font-size: 14px; }
+
+.weather-condition__temp {
+  color: #fff;
+  margin-top: 0.75rem;
+  text-align: center;
+  font-size: 5rem;
+  font-weight: 100; }
+
+.weather-condition__desc {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 2rem 5rem 2rem 5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 400; }
+  .weather-condition__desc img {
+    vertical-align: middle; }
+  .weather-condition__desc .citem {
+    padding: 0 0 3px 5px; }
+
+@media only screen and (min-width: 480px) {
+  .weather-condition {
+    float: left;
+    width: 50%; } }
