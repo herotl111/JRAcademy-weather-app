@@ -48,22 +48,25 @@ export default class WeatherChannel extends Component{
             return ({unit:"C"});            
             });
     }
-    swtichLabel =() => {
-        
+    switchLabelMore =() => {       
         this.setState ((preState, props) =>{
-            if (preState.offLabel==="weather-forecast__row onoffswitch-checkbox" 
-            && preState.switchButtonFew==="forecast__switch_0 switch-active")   
-            {return ({offLabel:"weather-forecast__row",
+            
+            return ({offLabel:"weather-forecast__row",
                     switchButtonFew:"forecast__switch_0",
                     switchButtonMore:"forecast__switch_0 switch-active"
-                    });}
-            
-            return ({offLabel:"weather-forecast__row onoffswitch-checkbox",
+                    });            
+        });
+    }
+    switchLabelFew =() => {
+        this.setState ((preState, props) => {
+        return ({offLabel:"weather-forecast__row onoffswitch-checkbox",
             switchButtonFew:"forecast__switch_0 switch-active",
             switchButtonMore:"forecast__switch_0"
             })
-        });
+        })
     }
+
+
     render(){
         return(
             <main>
@@ -78,8 +81,11 @@ export default class WeatherChannel extends Component{
                 <Forecast 
                     data={mockForecastData} 
                     unit={this.state.unit}
+                    switchButtonToFew={this.state.switchButtonFew}
+                    switchButtonToMore={this.state.switchButtonMore}
                     offLabel={this.state.offLabel}
-                    swtichLabel={this.swtichLabel}
+                    switchButtonFew={this.switchLabelFew}
+                    switchButtonMore={this.switchLabelMore}
                  />                 
             </main>
         );

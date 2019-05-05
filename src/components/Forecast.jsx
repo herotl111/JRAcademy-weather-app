@@ -5,8 +5,8 @@ const Forecast = (props) => {
     return (
         <section class="weather-forecast">
             <div className="forecast__switch">
-                <button onClick={props.swtichLabel} className="forecast__switch_0 switch-active">5 items</button>
-                <button onClick={props.swtichLabel} className="forecast__switch_1">10 items</button>
+                <button onClick={props.switchButtonFew} className={props.switchButtonToFew}>5 items</button>
+                <button onClick={props.switchButtonMore} className={props.switchButtonToMore}>10 items</button>
             </div>
             <div className="weather-forecast__row ">
                 <span className="weather-forecast__day">{data[0].weekday}</span>
