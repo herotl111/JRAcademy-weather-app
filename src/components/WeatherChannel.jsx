@@ -58,7 +58,12 @@ export default class WeatherChannel extends Component{
 
     // 可以正常工作, 一定要setState
     toggle = () => {
-        this.state.celsius === true? this.setState({celsius: false}) : this.setState({celsius: true});
+        // this.state.celsius === true? this.setState({celsius: false}) : this.setState({celsius: true});
+        this.setState((preState, props)=>{
+            return {
+                celsius: !preState.celsius,
+            };
+        });
     };
 
     // 也可以正常工作，但似乎没必要
