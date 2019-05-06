@@ -24,6 +24,11 @@ const mockForecastData = [
 ];
 
 export default class WeatherChannel extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {celsius: false, quantity: 3};
+    }
+
     render(){
         return(
             <main>
@@ -33,4 +38,35 @@ export default class WeatherChannel extends Component{
             </main>
         );
     }
+
+    // ！！！！！！！！！！！！！！！！！！!这样写不更新显示！！！！！！！！！！！！！！！！！！！！！
+    // toggle = () => {
+    //     if (this.state.celsius === true) {
+    //         this.state.celsius = false;
+    //     } else {
+    //         this.state.celsius = true;
+    //     }
+    //     console.log('this.state.celsius:' + this.state.celsius);
+    // };
+
+    // 可以正常工作, 一定要setState
+    toggle = () => {
+        this.state.celsius === true? this.setState({celsius: false}) : this.setState({celsius: true});
+    };
+
+    // 也可以正常工作，但似乎没必要
+    // toggle = () => {
+    //     this.setState((preState, props) => {
+    //         return preState.celsius === true ? {celsius: false} : {celsius: true};
+    //     });
+    // };
+
+    selectQuantityAsThree = () => {
+        this.setState({quantity: 3});
+    }
+
+    selectQuantityAsFive = () => {
+        this.setState({quantity: 5});
+    }
+
 }
