@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../images/logo.png';
-import wind from '../images/icon-wind.png';
+
 
 const Header = (props) => {
     return (

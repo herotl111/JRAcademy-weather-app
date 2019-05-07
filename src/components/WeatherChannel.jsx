@@ -35,8 +35,8 @@ export default class WeatherChannel extends Component{
         this.state={
             unit:"C",
             switchButtonFew:"forecast__switch_0 switch-active",
-            switchButtonMore:"forecast__switch_0",
-            offLabel:"weather-forecast__row onoffswitch-checkbox"
+            switchButtonMore:"forecast__switch_1",
+            items:5
         };
     }
     
@@ -51,23 +51,24 @@ export default class WeatherChannel extends Component{
     switchLabelMore =() => {       
         this.setState ((preState, props) =>{
             
-            return ({offLabel:"weather-forecast__row",
+            return ({items:10,
                     switchButtonFew:"forecast__switch_0",
-                    switchButtonMore:"forecast__switch_0 switch-active"
+                    switchButtonMore:"forecast__switch_1 switch-active"
                     });            
         });
     }
     switchLabelFew =() => {
         this.setState ((preState, props) => {
-        return ({offLabel:"weather-forecast__row onoffswitch-checkbox",
+        return ({items:5,
             switchButtonFew:"forecast__switch_0 switch-active",
-            switchButtonMore:"forecast__switch_0"
+            switchButtonMore:"forecast__switch_1"
             })
         })
     }
 
 
     render(){
+        // let items = this.state.items;
         return(
             <main>
                 <Toolbar 
@@ -80,10 +81,10 @@ export default class WeatherChannel extends Component{
                  />               
                 <Forecast 
                     data={mockForecastData} 
+                    items={this.state.items}
                     unit={this.state.unit}
                     switchButtonToFew={this.state.switchButtonFew}
-                    switchButtonToMore={this.state.switchButtonMore}
-                    offLabel={this.state.offLabel}
+                    switchButtonToMore={this.state.switchButtonMore}                    
                     switchButtonFew={this.switchLabelFew}
                     switchButtonMore={this.switchLabelMore}
                  />                 
