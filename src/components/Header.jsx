@@ -1,7 +1,7 @@
 import React from 'react';
 import imgLogo from '../images/logo.png';
 
-const Header = (props) => {
+const Header = () => { 
     return (
         <header>
             <img className="header__logo" src={imgLogo} />

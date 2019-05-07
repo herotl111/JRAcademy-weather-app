@@ -3,12 +3,11 @@ import iconUmberella from '../images/icon-umberella.png';
 import iconWind from '../images/icon-wind.png'
 import iconCompass from '../images/icon-compass.png'
 
-const Forecast = (props) => {
-
+const CityCondition = (props) => {
     const {city, weather, temp, humidity, windSpeed, windDirection} = props.conditionData;
     
     let tempDisplay;
-    if (props.celsius) {
+    if (props.isCelsius) {
         tempDisplay = temp.c + ' c';
     } else {
         tempDisplay = temp.f + ' f';
@@ -37,4 +36,4 @@ const Forecast = (props) => {
     );
 }
 
-export default Forecast;
+export default CityCondition;
