@@ -1,10 +1,21 @@
 import React from 'react';
+import switchUnit from '../actions/unitAction'
 
-const Toolbar = (props) => {
+const Toolbar =(props) => {
+    const { unit,dispatch} =props;
+    const swapTempUnit = () => {
+            
+        if (unit==="C") {
+            return ("F");
+        }
+        return ("C");            
+    }
+   
+
     return (
         <nav>
             <form className="search-input" action=""></form>            
-            <button onClick={props.swapTempUnit} className="temp-switch">°{props.unit}</button>
+            <button onClick={()=>dispatch(switchUnit(swapTempUnit()))} className="temp-switch">°{unit}</button>
         </nav>
     );
 }

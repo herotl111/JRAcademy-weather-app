@@ -1,16 +1,11 @@
 
 
-export const switchToFew = (active) => {
+const swtichItem = (active) => {
     return {
-        type: "ACTIVE_FEW",
+        type: "ACTIVE",
         payload: {active}
     };
 }
 
-export const switchToMore = (active) => {
-    return {
-        type: "ACTIVE_MORE",
-        payload: {active}
-    };
-}
+export default swtichItem;
 

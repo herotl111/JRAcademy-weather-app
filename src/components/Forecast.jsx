@@ -1,15 +1,26 @@
 import React from 'react';
 
+import activeItem from '../actions/activeAction';
+
 const Forecast = (props) => {
-    const { data, unit,items} = props;
+    const { data, unit,active, dispatch} = props;
+    const itemFewActive={
+        itemFewClass:"forecast__switch_0 switch-active",
+        itemMoreClass:"forecast__switch_1",
+        item:5};
+    const itemMoreActive={
+        itemFewClass:"forecast__switch_0",
+        itemMoreClass:"forecast__switch_1 switch-active",
+        item:10};
+
     return (
         <section class="weather-forecast">
             <div className="forecast__switch">
-                <button onClick={props.switchButtonFew} className={props.switchButtonToFew}>5 items</button>
-                <button onClick={props.switchButtonMore} className={props.switchButtonToMore}>10 items</button>
+                <button onClick={() =>dispatch(activeItem(itemFewActive))} className={active.itemFewClass}>5 items</button>
+                <button onClick={()=>dispatch(activeItem(itemMoreActive))} className={active.itemMoreClass}>10 items</button>
             </div>
             {
-                data.slice(0,items).map((element,index)=> {
+                data.slice(0,active.item).map((element,index)=> {
                     return (
                         <div className="weather-forecast__row" key={index}>
                             <span className="weather-forecast__day">{element.weekday}</span>

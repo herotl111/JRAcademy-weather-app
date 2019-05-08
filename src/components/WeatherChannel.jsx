@@ -1,4 +1,5 @@
 import React , {Component} from 'react';
+import { connect } from 'react-redux';
 
 import Toolbar from './Toolbar';
 import CityCondition from './CityCondition';
@@ -29,66 +30,37 @@ const mockConditionData = {
   ];
   
 
-export default class WeatherChannel extends Component{
-    constructor(props) {
-        super(props);
-        this.state={
-            unit:"C",
-            switchButtonFew:"forecast__switch_0 switch-active",
-            switchButtonMore:"forecast__switch_1",
-            items:5
-        };
-    }
+class WeatherChannel extends Component{
     
-    swapTempUnit = () => {
-        this.setState ((preUnit, props) => {
-            if (preUnit.unit==="C") {
-                return ({unit:"F",});
-            }
-            return ({unit:"C"});            
-            });
-    }
-    switchLabelMore =() => {       
-        this.setState ((preState, props) =>{
-            
-            return ({items:10,
-                    switchButtonFew:"forecast__switch_0",
-                    switchButtonMore:"forecast__switch_1 switch-active"
-                    });            
-        });
-    }
-    switchLabelFew =() => {
-        this.setState ((preState, props) => {
-        return ({items:5,
-            switchButtonFew:"forecast__switch_0 switch-active",
-            switchButtonMore:"forecast__switch_1"
-            })
-        })
-    }
-
-
     render(){
-        // let items = this.state.items;
+        const { unit, active, dispatch } = this.props;
         return(
             <main>
                 <Toolbar 
-                    swapTempUnit={this.swapTempUnit}
-                    unit={this.state.unit}
+                    unit={unit}
+                    dispatch={dispatch}
                 />                
                 <CityCondition 
                     data={mockConditionData} 
-                    unit={this.state.unit}                
+                    unit={unit}    
+                    // dispatch={dispatch}            
                  />               
                 <Forecast 
-                    data={mockForecastData} 
-                    items={this.state.items}
-                    unit={this.state.unit}
-                    switchButtonToFew={this.state.switchButtonFew}
-                    switchButtonToMore={this.state.switchButtonMore}                    
-                    switchButtonFew={this.switchLabelFew}
-                    switchButtonMore={this.switchLabelMore}
-                 />                 
+                    data={mockForecastData}                     
+                    unit={unit}
+                    active={active}
+                    dispatch={dispatch}
+                 />                            
             </main>
         );
     }
 }
+const mapStateToProps = (state) => {
+    return {        
+        unit: state.unit.unit,
+        active:state.active}
+  }
+
+const WeatherChannelC = connect(mapStateToProps)(WeatherChannel);
+
+export default WeatherChannelC;
