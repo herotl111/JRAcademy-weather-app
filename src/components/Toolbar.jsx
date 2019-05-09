@@ -1,7 +1,16 @@
 import React from 'react';
+import {C, changeToC, changeToF} from '../actions/tempActions';
 import "../styles/toolbar.css";
 
 class Toolbar extends React.Component {
+    handleTempToC = () => {
+        this.props.dispatch(changeToC());
+    }
+
+    handleTempToF = () => {
+        this.props.dispatch(changeToF());
+    }
+
     render() {
         return (
             <nav>
@@ -9,9 +18,9 @@ class Toolbar extends React.Component {
                 <button className="search-btn">
                     <i className="fa fa-search"></i>
                 </button>
-                <button className="temp-switch" onClick={this.props.handleTemp}>
+                <button className="temp-switch" onClick={this.props.temp===C? this.handleTempToF : this.handleTempToC}>
                     <i className="fa fa-thermometer-empty" aria-hidden="true"></i>
-                    <sup>&deg;</sup>{this.props.tempSwitch}
+                    <sup>&deg;</sup>{this.props.temp}
                 </button>
             </nav>
         );

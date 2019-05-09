@@ -1,70 +1,53 @@
 import React from 'react';
+import {C} from '../actions/tempActions';
+import {ROW1, changeToRow1, changeToRow2} from '../actions/rowsActions';
 import "../styles/forecast.css";
 
 const Row = (props)=>{
-    if (props.tempSwitch==='c') {
-        return (
-            <div className="weather-forecast__row">
-                <span className="weather-forecast__row__day">{props.forecastData.weekday}</span>
-                <span className="weather-forecast__row__icon">
-                    <i className="fa fa-clock-o"></i> {props.forecastData.time}
-                </span>
-                <span className="weather-forecast__row__high">{`${props.forecastData.high.C} c`}</span>
-                <span className="weather-forecast__row__low">{`${props.forecastData.low.C} c`}</span>
-            </div>
-        );
-    } else {
-        return (
-            <div className="weather-forecast__row">
-                <span className="weather-forecast__row__day">{props.forecastData.weekday}</span>
-                <span className="weather-forecast__row__icon">
-                    <i className="fa fa-clock-o"></i> {props.forecastData.time}
-                </span>
-                <span className="weather-forecast__row__high">{`${props.forecastData.high.F} f`}</span>
-                <span className="weather-forecast__row__low">{`${props.forecastData.low.F} f`}</span>
-            </div>
-        );
-    }
-    
+    return (
+        <div className="weather-forecast__row">
+            <span className="weather-forecast__row__day">{props.forecastData.weekday}</span>
+            <span className="weather-forecast__row__icon">
+                <i className="fa fa-clock-o"></i> {props.forecastData.time}
+            </span>
+            <span className="weather-forecast__row__high">{props.temp===C? `${props.forecastData.high.C} C` : `${props.forecastData.high.F} F`}</span>
+            <span className="weather-forecast__row__low">{props.temp===C? `${props.forecastData.low.C} C` : `${props.forecastData.low.F} F`}</span>
+        </div>
+    );
 }
 
 class Forecast extends React.Component {
+    handle1 = () => {
+        this.props.dispatch(changeToRow1());
+    }
+    
+    handle2 = () => {
+        this.props.dispatch(changeToRow2());
+    }
+
     render() {
-        if (this.props.forecastSwitch===5) {
-            return (
-                <section className="weather-forecast">
-                    <div className="weather-forecast__switch">
-                        <button className="weather-forecast__switch__five switch-active">5 items</button>
-                        <button className="weather-forecast__switch__ten" onClick={this.props.handleForecast}>10 items</button>
-                    </div>
-                    <Row tempSwitch={this.props.tempSwitch} forecastData={this.props.mockForecastData[0]} />
-                    <Row tempSwitch={this.props.tempSwitch} forecastData={this.props.mockForecastData[1]} />
-                    <Row tempSwitch={this.props.tempSwitch} forecastData={this.props.mockForecastData[2]} />
-                    <Row tempSwitch={this.props.tempSwitch} forecastData={this.props.mockForecastData[3]} />
-                    <Row tempSwitch={this.props.tempSwitch} forecastData={this.props.mockForecastData[4]} />
-                </section>
-            );
+        const {rows, temp} = this.props;
+        let button1, button2;
+        if (rows===ROW1) {
+            button1 = <button className="weather-forecast__switch__five switch-active">5 items</button>;
+            button2= <button className="weather-forecast__switch__ten" onClick={this.handle2}>10 items</button>;
         } else {
-            return (
-                <section className="weather-forecast">
-                    <div className="weather-forecast__switch">
-                        <button className="weather-forecast__switch__five" onClick={this.props.handleForecast}>5 items</button>
-                        <button className="weather-forecast__switch__ten switch-active">10 items</button>
-                    </div>
-                    <Row tempSwitch={this.props.tempSwitch} forecastData={this.props.mockForecastData[0]} />
-                    <Row tempSwitch={this.props.tempSwitch} forecastData={this.props.mockForecastData[1]} />
-                    <Row tempSwitch={this.props.tempSwitch} forecastData={this.props.mockForecastData[2]} />
-                    <Row tempSwitch={this.props.tempSwitch} forecastData={this.props.mockForecastData[3]} />
-                    <Row tempSwitch={this.props.tempSwitch} forecastData={this.props.mockForecastData[4]} />
-                    <Row tempSwitch={this.props.tempSwitch} forecastData={this.props.mockForecastData[5]} />
-                    <Row tempSwitch={this.props.tempSwitch} forecastData={this.props.mockForecastData[6]} />
-                    <Row tempSwitch={this.props.tempSwitch} forecastData={this.props.mockForecastData[7]} />
-                    <Row tempSwitch={this.props.tempSwitch} forecastData={this.props.mockForecastData[8]} />
-                    <Row tempSwitch={this.props.tempSwitch} forecastData={this.props.mockForecastData[9]} />
-                </section>
-            );
+            button1 = <button className="weather-forecast__switch__five" onClick={this.handle1}>5 items</button>;
+            button2= <button className="weather-forecast__switch__ten switch-active">10 items</button>;
         }
-        
+        return (
+            <section className="weather-forecast">
+                <div className="weather-forecast__switch">
+                    {button1}
+                    {button2}
+                </div>
+                {
+                    this.props.mockForecastData.map((data, index)=>{
+                        return (<Row key={index} temp={temp} forecastData={data} />);
+                    })
+                }
+            </section>
+        );
     }
 }
 

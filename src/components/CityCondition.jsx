@@ -1,27 +1,27 @@
 import React from 'react';
 import "../styles/citycondition.css";
+import {C} from '../actions/tempActions';
 import {ReactComponent as Clear} from '../images/clear.svg';
 import umberella from "../images/icon-umberella.png";
 import wind from "../images/icon-wind.png";
 import compass from "../images/icon-compass.png";
 
 const Temp = (props) => {
-    if (props.tempSwitch==='c') {
-        return (<div className="weather-condition__temp">{`${props.temp.C} c`}</div>);
+    if (props.temp===C) {
+        return (<div className="weather-condition__temp">{`${props.cityTemp.C} C`}</div>);
     } else {
-        return (<div className="weather-condition__temp">{`${props.temp.F} f`}</div>);
+        return (<div className="weather-condition__temp">{`${props.cityTemp.F} F`}</div>);
     }
 }
 
-const Forecast = (props) => {
+const CityCondition = (props) => {
     let condition = props.mockConditionData;
-    let tempSwitch = props.tempSwitch;
+    let temp = props.temp;
     return (
         <section className="weather-condition">
             <div className="weather-condition__location">{condition.city}</div>
             <div><Clear />{condition.weather}</div>
-            {/* <div className="weather-condition__temp">19 c</div> */}
-            <Temp tempSwitch={tempSwitch} temp={condition.temp}/>
+            <Temp temp={temp} cityTemp={condition.temp}/>
             <div className="weather-condition__desc">
                 <div>
                     <img src={umberella} alt="Umberella icon"/>
@@ -40,4 +40,4 @@ const Forecast = (props) => {
     );
 }
 
-export default Forecast;
+export default CityCondition;
