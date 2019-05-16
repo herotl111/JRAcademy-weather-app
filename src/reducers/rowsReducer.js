@@ -1,4 +1,4 @@
-import {ROW1, ROW2} from '../actions/rowsActions';
+import {ROW1, ROW2} from '../constants';
 
 const defaultState = {
   rows: ROW1

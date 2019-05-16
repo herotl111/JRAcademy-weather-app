@@ -1,5 +1,4 @@
-export const C = 'C';
-export const F = 'F';
+import {C, F} from '../constants';
 
 export const changeToC = () => {
   return {
@@ -14,11 +13,3 @@ export const changeToF = () => {
     payload: null
   };
 }
-
-// export const changeTemp = (temp) => {
-//   if (temp===C) {
-//     return {type: F}
-//   } else {
-//     return {type: C}
-//   }
-// }

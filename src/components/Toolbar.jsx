@@ -1,5 +1,6 @@
 import React from 'react';
-import {C, changeToC, changeToF} from '../actions/tempActions';
+import {C} from '../constants';
+import {changeToC, changeToF} from '../actions/tempActions';
 import "../styles/toolbar.css";
 
 class Toolbar extends React.Component {

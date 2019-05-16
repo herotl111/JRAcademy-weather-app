@@ -1,4 +1,4 @@
-import {C, F} from '../actions/tempActions';
+import {C, F} from '../constants';
 
 const defaultState = {
   temp: C

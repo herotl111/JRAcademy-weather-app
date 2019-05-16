@@ -1,7 +1,6 @@
 import React from 'react';
 import "../styles/citycondition.css";
-import {C} from '../actions/tempActions';
-import {ReactComponent as Clear} from '../images/clear.svg';
+import {C} from '../constants';
 import umberella from "../images/icon-umberella.png";
 import wind from "../images/icon-wind.png";
 import compass from "../images/icon-compass.png";
@@ -15,13 +14,17 @@ const Temp = (props) => {
 }
 
 const CityCondition = (props) => {
-    let condition = props.mockConditionData;
+    const condition = props.conditionData;
+    const temps ={
+        C: condition.celsius,
+        F: condition.fahrenheit
+    } 
     let temp = props.temp;
     return (
         <section className="weather-condition">
-            <div className="weather-condition__location">{condition.city}</div>
-            <div><Clear />{condition.weather}</div>
-            <Temp temp={temp} cityTemp={condition.temp}/>
+            <div className="weather-condition__location">{`${condition.name}, ${condition.country}`}</div>
+            <div>{condition.weather}</div>
+            <Temp temp={temp} cityTemp={temps}/>
             <div className="weather-condition__desc">
                 <div>
                     <img src={umberella} alt="Umberella icon"/>

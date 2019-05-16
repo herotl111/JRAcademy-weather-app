@@ -1,5 +1,4 @@
-export const ROW1 = 5;
-export const ROW2 = 10;
+import {ROW1, ROW2} from '../constants';
 
 export const changeToRow1 = () => {
   return {
