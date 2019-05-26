@@ -14,11 +14,10 @@ class Forecast extends React.Component {
             <i className='fa fa-clock-o' /> {params.time}
           </span>
           <span className='weather-forecast__high'>
-            {params.high[unit]} {unit}
+            {params.high[this.props.unit]} {this.props.unit}
           </span>
           <span className='weather-forecast__low'>
-            {' '}
-            {params.low[unit]} {unit}
+            {params.low[this.props.unit]} {this.props.unit}
           </span>
         </div>
       );
@@ -26,8 +25,18 @@ class Forecast extends React.Component {
     return (
       <section className='weather-forecast'>
         <div className='forecast__switch'>
-          <button className='forecast__switch_0 switch-active'>5 items</button>
-          <button className='forecast__switch_1'>10 items</button>
+          <button
+            className={`forecast__switch_0 ${this.props.btnShortStyle}`}
+            onClick={this.props.changeShortCount}
+          >
+            5 items
+          </button>
+          <button
+            className={`forecast__switch_1 ${this.props.btnLongStyle}`}
+            onClick={this.props.changeLongCount}
+          >
+            10 items
+          </button>
         </div>
         <div>{params}</div>
       </section>
